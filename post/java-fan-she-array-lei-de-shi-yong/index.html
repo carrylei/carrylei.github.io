@@ -1,22 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://carrylei.github.io</id>
-    <title>Gridea</title>
-    <updated>2019-12-10T12:46:16.890Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://carrylei.github.io"/>
-    <link rel="self" href="https://carrylei.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
-    <logo>https://carrylei.github.io/images/avatar.png</logo>
-    <icon>https://carrylei.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, Gridea</rights>
-    <entry>
-        <title type="html"><![CDATA[java反射-Array类的使用]]></title>
-        <id>https://carrylei.github.io/post/java-fan-she-array-lei-de-shi-yong</id>
-        <link href="https://carrylei.github.io/post/java-fan-she-array-lei-de-shi-yong">
-        </link>
-        <updated>2019-12-10T12:41:18.000Z</updated>
-        <content type="html"><![CDATA[<p>有关Java反射的另外的文章：https://www.jianshu.com/nb/29780510<br>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>java反射-Array类的使用 | Gridea</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://carrylei.github.io/favicon.ico?v=1575981907553">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://carrylei.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://carrylei.github.io">
+  <img class="avatar" src="https://carrylei.github.io/images/avatar.png?v=1575981907553" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              java反射-Array类的使用
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-12-10
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>有关Java反射的另外的文章：https://www.jianshu.com/nb/29780510<br>
 不用说大家也知道java.lang.Array是对Java反射包中数组操作的一个类。JavaSE8的文档中对Array的描述是这样说的：</p>
 <p>The Array class provides static methods to dynamically create and access Java arrays.</p>
 <p>Array类提供静态方法来动态创建和访问Java数组。访问不难理解，动态创建可以细看一下。</p>
@@ -123,6 +194,66 @@ return newArray;<br>
 }</p>
 </li>
 </ul>
-]]></content>
-    </entry>
-</feed>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://carrylei.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
